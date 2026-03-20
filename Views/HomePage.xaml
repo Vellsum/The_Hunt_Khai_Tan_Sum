@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="The_Hunt_Khai_Tan_Sum.Views.HomePage"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="15">
+
+            <Label Text="HOME/ DASHBOARD" 
+                   HorizontalOptions="Center"
+                   FontSize="24" 
+                   FontAttributes="Bold, Italic" 
+                   TextColor="Black" 
+                   Margin="0,0,0,20"/>
+
+            <HorizontalStackLayout Spacing="10">
+                <Border StrokeShape="RoundRectangle 20" BackgroundColor="White" HeightRequest="40" WidthRequest="40">
+                    <Label Text="{Binding AppCount}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" />
+                </Border>
+                <Button Text="Graveyard [Select Apps]" 
+                        BackgroundColor="#E8F0D1" TextColor="Black" CornerRadius="15" 
+                        Clicked="OnGraveyardClicked" />
+            </HorizontalStackLayout>
+
+            <Button Text="Manifesto [Write Message]" 
+                    BackgroundColor="#E8F0D1" TextColor="Black" CornerRadius="15"
+                    Clicked="OnManifestoClicked" />
+
+            <Button Text="History" 
+                    BackgroundColor="#E8F0D1" TextColor="Black" CornerRadius="15"
+                    Clicked="OnHistoryClicked" />
+
+            <Button Text="Settings" 
+                    BackgroundColor="#E8F0D1" TextColor="Black" CornerRadius="15"
+                    Clicked="OnSettingsClicked" />
+
+            <Label Text="{Binding HuntStatusText}"
+                   FontSize="18"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold,Italic"
+                   Margin="0,40,0,10" />
+
+            <Switch IsToggled="{Binding HuntStatusChecked}"
+                    HorizontalOptions="Center" />
+
+            <Button Text="Start HUNT" 
+                    Command="{Binding ToggleHuntCommand}"
+                    BackgroundColor="#D1FFBD" 
+                    TextColor="Black" 
+                    FontSize="20" 
+                    FontAttributes="Bold"
+                    HeightRequest="60"
+                    CornerRadius="25"
+                    Clicked="OnStartHuntClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

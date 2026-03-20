@@ -1,0 +1,13 @@
+<Shell
+    x:Class="The_Hunt_Khai_Tan_Sum.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:The_Hunt_Khai_Tan_Sum"
+    xmlns:views="clr-namespace:The_Hunt_Khai_Tan_Sum.Views"
+    Title="The_Hunt_Khai_Tan_Sum">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:HomePage}"
+        Route="HomePage" />
+</Shell>
