@@ -1,23 +1,25 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;  
-using Microsoft.Maui.Controls; // if this is a .NET MAUI project
-// using Xamarin.Forms; // if this is a Xamarin.Forms project
+using CommunityToolkit.Mvvm.Input;
 
 namespace The_Hunt_Khai_Tan_Sum.ViewModels;
 
-public partial class ManifestoViewModels : ObservableObject
+public partial class ManifestoViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _userMessage = string.Empty;
+    private string _manifestoText;
+
+    public ManifestoViewModel()
+    {
+        // Load saved text
+        ManifestoText = Preferences.Default.Get("user_manifesto_text", "");
+    }
 
     [RelayCommand]
     private async Task SaveManifesto()
     {
-       if(string.IsNullOrWhiteSpace(UserMessage))
-       {
-           await Application.Current.MainPage.DisplayAlert("Error", "Please enter a message before saving.", "OK");
-           return;
-       }
-        await Application.Current.MainPage.DisplayAlert("Saved", "Your Manifesto is set for the next Hunt!", "OK");
+        Preferences.Default.Set("user_manifesto_text", ManifestoText);
+        // We use Shell.Current for cleaner navigation in ViewModels
+        await Shell.Current.DisplayAlert("Saved", "Manifesto locked in!", "OK");
+        await Shell.Current.Navigation.PopAsync();
     }
 }

@@ -5,53 +5,82 @@
              BackgroundColor="White">
 
     <ScrollView>
-        <VerticalStackLayout Padding="30" Spacing="15">
+        <VerticalStackLayout Padding="30" Spacing="20" HorizontalOptions="Center" VerticalOptions="Start">
 
             <Label Text="HOME/ DASHBOARD" 
                    HorizontalOptions="Center"
-                   FontSize="24" 
+                   FontSize="30" 
                    FontAttributes="Bold, Italic" 
                    TextColor="Black" 
                    Margin="0,0,0,20"/>
 
-            <HorizontalStackLayout Spacing="10">
-                <Border StrokeShape="RoundRectangle 20" BackgroundColor="White" HeightRequest="40" WidthRequest="40">
-                    <Label Text="{Binding AppCount}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" />
+            <HorizontalStackLayout Spacing="15">
+                <Border StrokeShape="RoundRectangle 30" 
+                        BackgroundColor="Black" 
+                        HeightRequest="55" 
+                        WidthRequest="55">
+                    <Label Text="{Binding AppCount}" 
+                           HorizontalOptions="Center" 
+                           VerticalOptions="Center" 
+                           TextColor="White" 
+                           FontSize="20" 
+                           FontAttributes="Bold" />
                 </Border>
                 <Button Text="Graveyard [Select Apps]" 
-                        BackgroundColor="#E8F0D1" TextColor="Black" CornerRadius="15" 
+                        BackgroundColor="#E8F0D1" 
+                        TextColor="Black" 
+                        CornerRadius="20"      
+                        WidthRequest="260"
                         Clicked="OnGraveyardClicked" />
             </HorizontalStackLayout>
 
-            <Button Text="Manifesto [Write Message]" 
-                    BackgroundColor="#E8F0D1" TextColor="Black" CornerRadius="15"
-                    Clicked="OnManifestoClicked" />
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="💬" FontSize="45" VerticalOptions="Center" />
+                <Button Text="Manifesto [Write Message]" 
+                        BackgroundColor="#E8F0D1" 
+                        TextColor="Black" 
+                        CornerRadius="20"
+                        WidthRequest="260"
+                        Clicked="OnManifestoClicked" />
+            </HorizontalStackLayout>
 
-            <Button Text="History" 
-                    BackgroundColor="#E8F0D1" TextColor="Black" CornerRadius="15"
-                    Clicked="OnHistoryClicked" />
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="🕒" FontSize="45" VerticalOptions="Center" />
+                <Button Text="History"
+                        BackgroundColor="#E8F0D1" 
+                        TextColor="Black" 
+                        CornerRadius="20"
+                        WidthRequest="260"
+                        Clicked="OnHistoryClicked" />
+            </HorizontalStackLayout>
 
-            <Button Text="Settings" 
-                    BackgroundColor="#E8F0D1" TextColor="Black" CornerRadius="15"
-                    Clicked="OnSettingsClicked" />
+            <HorizontalStackLayout Spacing="15">
+                <Label Text="⚙️" FontSize="45" VerticalOptions="Center" />
+                <Button Text="Settings" 
+                        BackgroundColor="#E8F0D1" 
+                        TextColor="Black" 
+                        CornerRadius="20"
+                        WidthRequest="260"
+                        Clicked="OnSettingsClicked" />
+            </HorizontalStackLayout>
 
             <Label Text="{Binding HuntStatusText}"
-                   FontSize="18"
+                   FontSize="22"
                    HorizontalOptions="Center"
-                   FontAttributes="Bold,Italic"
-                   Margin="0,40,0,10" />
-
-            <Switch IsToggled="{Binding HuntStatusChecked}"
-                    HorizontalOptions="Center" />
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   Margin="0,60,0,10" />
 
             <Button Text="Start HUNT" 
                     Command="{Binding ToggleHuntCommand}"
                     BackgroundColor="#D1FFBD" 
                     TextColor="Black" 
-                    FontSize="20" 
+                    FontSize="24" 
                     FontAttributes="Bold"
-                    HeightRequest="60"
-                    CornerRadius="25"
+                    HeightRequest="80"
+                    WidthRequest="280"
+                    CornerRadius="30"
+                    HorizontalOptions="Center"
                     Clicked="OnStartHuntClicked"/>
 
         </VerticalStackLayout>

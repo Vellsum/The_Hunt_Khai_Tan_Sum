@@ -7,24 +7,24 @@ public partial class GraveyardPage : ContentPage
         InitializeComponent();
     }
 
-    // Rename this to match the 'Clicked="OnBuryClicked"' in your XAML
-    private async void OnBuryClicked(object sender, EventArgs e)
+    private async void OnSaveClicked(object sender, EventArgs e)
     {
         int count = 0;
+        if (TikTokSwitch.IsToggled) count++;
+        if (InstagramSwitch.IsToggled) count++;
+        if (MessengerSwitch.IsToggled) count++;
+        if (YouTubeSwitch.IsToggled) count++;
+        if (WhatsAppSwitch.IsToggled) count++;
 
-        // Check each CheckBox using the x:Name defined in your XAML
-        if (TikTokCheck?.IsChecked == true) count++;
-        if (InstagramCheck?.IsChecked == true) count++;
-        if (YouTubeCheck?.IsChecked == true) count++;
-        if (FaceBookCheck?.IsChecked == true) count++;
-
-        // NATIVE STORAGE: Use the same key "graveyard_count" that your HomePage reads
+        // Save the count for the Dashboard circle [cite: 2]
         Microsoft.Maui.Storage.Preferences.Default.Set("graveyard_count", count);
 
-        // Corrected method name: DisplayAlert (not DisplayAlertAsync)
-        await DisplayAlert("Rest in Peace", $"You have buried {count} distractions.", "OK");
+        await DisplayAlert("The HUNT", "Apps buried!", "OK");
+        await Navigation.PopAsync();
+    }
 
-        // Navigate back to the Dashboard
+    private async void OnBackClicked(object sender, EventArgs e)
+    {
         await Navigation.PopAsync();
     }
 }

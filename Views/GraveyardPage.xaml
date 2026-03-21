@@ -2,68 +2,118 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="The_Hunt_Khai_Tan_Sum.Views.GraveyardPage"
-             Title="The Graveyard"
              BackgroundColor="White">
 
-    <VerticalStackLayout Padding="30" Spacing="20">
+    <VerticalStackLayout Padding="30" Spacing="25" >
+        <Label Text="The Graveyard"
+               FontSize="28" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" 
+               TextColor="Black" />
+        <Label Text="Select Apps to Hunt" 
+               FontSize="18" FontAttributes="Italic" 
+               HorizontalOptions="Center" 
+               TextColor="Gray" 
+               Margin="0,0,0,20"/>
 
-        <Label Text="App GRAVEYARD"
-               FontSize="24"
-               FontAttributes="Bold"
-               HorizontalOptions="Center"
-               TextColor="Black"/>
+        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
+            <Label Grid.Column="0" 
+                   Text="♪" FontSize="35" 
+                   TextColor="Black" 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"/>
+            <Label Grid.Column="1" 
+                   Text="TikTok" 
+                   VerticalOptions="Center" 
+                   FontSize="18" 
+                   TextColor="Black"/>
+            <Switch Grid.Column="2" 
+                    x:Name="TikTokSwitch" 
+                    OnColor="#D1FFBD" 
+                    VerticalOptions="Center" />
+        </Grid>
 
-        <Label Text="Select the apps you want to add to your graveyard."
-               TextColor="Gray"
-               FontSize="14"
-               HorizontalOptions="Center"/>
+        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
+            <Label Grid.Column="0" 
+                   Text="⏹️" FontSize="30" 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"/>
+            <Label Grid.Column="1" 
+                   Text="Instagram" 
+                   VerticalOptions="Center" 
+                   FontSize="18" 
+                   TextColor="Black"/>
+            <Switch Grid.Column="2" 
+                    x:Name="InstagramSwitch" 
+                    OnColor="#D1FFBD" 
+                    VerticalOptions="Center" />
+        </Grid>
 
-        <Frame BorderColor="#E8F0D1"
-               CornerRadius="10"
-               Padding="15">
+        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
+            <Label Grid.Column="0" 
+                   Text="💬" 
+                   FontSize="30" 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"/>
+            <Label Grid.Column="1" 
+                   Text="Messenger" 
+                   VerticalOptions="Center" 
+                   FontSize="18" 
+                   TextColor="Black"/>
+            <Switch Grid.Column="2" 
+                    x:Name="MessengerSwitch" 
+                    OnColor="#D1FFBD" 
+                    VerticalOptions="Center" />
+        </Grid>
 
-            <VerticalStackLayout Spacing="10">
+        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
+            <Label Grid.Column="0" 
+                   Text="📽️" 
+                   FontSize="30" 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"/>
+            <Label Grid.Column="1" 
+                   Text="YouTube" 
+                   VerticalOptions="Center" 
+                   FontSize="18" 
+                   TextColor="Black"/>
+            <Switch Grid.Column="2" 
+                    x:Name="YouTubeSwitch" 
+                    OnColor="#D1FFBD" 
+                    VerticalOptions="Center" />
+        </Grid>
+        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
+            <Label Grid.Column="0" 
+                   Text="📩" 
+                   FontSize="30" 
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"/> 
+            <Label Grid.Column="1" 
+                   Text="WhatsApp" 
+                   VerticalOptions="Center" 
+                   FontSize="18" 
+                   TextColor="Black"/>
+            <Switch Grid.Column="2" 
+                    x:Name="WhatsAppSwitch" 
+                    OnColor="#D1FFBD" 
+                    VerticalOptions="Center" />
+        </Grid>
 
-                <HorizontalStackLayout Spacing="20">
-                    <CheckBox x:Name="TikTokCheck"/>
-                    <Label Text="TikTok"
-                           VerticalOptions="Center"
-                           FontSize="18"/>
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout Spacing="20">
-                    <CheckBox x:Name="InstagramCheck"/>
-                    <Label Text="Instagram"
-                           VerticalOptions="Center"
-                           FontSize="18"/>
-                </HorizontalStackLayout>
-
-				<HorizontalStackLayout Spacing="20">
-					<CheckBox x:Name="YouTubeCheck" />
-					<Label Text="YouTube"
-                           VerticalOptions="Center"
-                           FontSize="18"/>
-				</HorizontalStackLayout>
-
-
-				<HorizontalStackLayout Spacing="20">
-					<CheckBox x:Name="FaceBookCheck"/>
-					<Label Text="Facebook"
-                           VerticalOptions="Center"
-                           FontSize="18"/>
-				</HorizontalStackLayout>
-
-            </VerticalStackLayout>
-
-        </Frame>
-
-        <Button Text="Save Apps"
-                BackgroundColor="#D1FFBD"
-                TextColor="Black"
-                FontAttributes="Bold"
-                CornerRadius="15"
-                HeightRequest="50"
-                Clicked="OnBuryClicked"/>
-
+        <HorizontalStackLayout HorizontalOptions="Center" Spacing="30" Margin="0,50,0,0">
+            <Button Text="BACK" 
+                    Clicked="OnBackClicked" 
+                    BackgroundColor="#FFD580" 
+                    TextColor="Black" 
+                    CornerRadius="15" 
+                    WidthRequest="110" 
+                    HeightRequest="45"/>
+            <Button Text="SAVE" 
+                    Clicked="OnSaveClicked" 
+                    BackgroundColor="#ADD8E6" 
+                    TextColor="Black" 
+                    CornerRadius="15" 
+                    WidthRequest="110" 
+                    HeightRequest="45"/>
+        </HorizontalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
