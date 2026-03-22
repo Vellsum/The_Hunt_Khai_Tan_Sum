@@ -4,6 +4,7 @@
              x:Class="The_Hunt_Khai_Tan_Sum.Views.GraveyardPage"
              BackgroundColor="White">
 
+
     <VerticalStackLayout Padding="30" Spacing="25" >
         <Label Text="The Graveyard"
                FontSize="28" 

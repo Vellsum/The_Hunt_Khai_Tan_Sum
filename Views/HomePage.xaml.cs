@@ -44,6 +44,7 @@ public partial class HomePage : ContentPage
 
     private async void OnStartHuntClicked(object? sender, EventArgs e)
     {
+
         // Matches the "Start HUNT" button in your wireframe [cite: 1, 9]
         await DisplayAlert("The HUNT", "The HUNT has started!", "OK");
     }

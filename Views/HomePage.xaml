@@ -75,13 +75,15 @@
                     Command="{Binding ToggleHuntCommand}"
                     BackgroundColor="#D1FFBD" 
                     TextColor="Black" 
-                    FontSize="24" 
+                    FontSize="24"
+                    
                     FontAttributes="Bold"
                     HeightRequest="80"
                     WidthRequest="280"
                     CornerRadius="30"
                     HorizontalOptions="Center"
                     Clicked="OnStartHuntClicked"/>
+
 
         </VerticalStackLayout>
     </ScrollView>

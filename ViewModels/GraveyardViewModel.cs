@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace The_Hunt_Khai_Tan_Sum.ViewModels;
 
+
 public partial class GraveyardViewModel : ObservableObject
 {
     [ObservableProperty]

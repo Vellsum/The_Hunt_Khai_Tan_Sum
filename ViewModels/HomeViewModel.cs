@@ -12,6 +12,7 @@ public partial class HomeViewModel : ObservableObject
     private int _appCount;
     // Matches wireframe dashboard [cite: 1, 2]
 
+
     public void RefreshAppCount()
     {
        AppCount = Microsoft.Maui.Storage.Preferences.Default.Get("graveyard_count", 0);

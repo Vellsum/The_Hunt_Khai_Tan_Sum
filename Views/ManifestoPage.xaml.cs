@@ -10,4 +10,5 @@ public partial class ManifestoPage : ContentPage
         // This is where link the two
         BindingContext = new ManifestoViewModel();
     }
+
 }

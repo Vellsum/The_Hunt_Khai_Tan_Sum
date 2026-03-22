@@ -22,4 +22,5 @@ public partial class ManifestoViewModel : ObservableObject
         await Shell.Current.DisplayAlert("Saved", "Manifesto locked in!", "OK");
         await Shell.Current.Navigation.PopAsync();
     }
+
 }
