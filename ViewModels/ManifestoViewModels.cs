@@ -19,7 +19,7 @@ public partial class ManifestoViewModel : ObservableObject
     {
         Preferences.Default.Set("user_manifesto_text", ManifestoText);
         // We use Shell.Current for cleaner navigation in ViewModels
-        await Shell.Current.DisplayAlert("Saved", "Manifesto locked in!", "OK");
+        await Shell.Current.DisplayAlertAsync("Saved", "Manifesto locked in!", "OK");
         await Shell.Current.Navigation.PopAsync();
     }
 

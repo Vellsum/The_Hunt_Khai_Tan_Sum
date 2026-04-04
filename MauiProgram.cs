@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Plugin.LocalNotification; // Add this using statement
 
 namespace The_Hunt_Khai_Tan_Sum
 {
@@ -9,6 +10,7 @@ namespace The_Hunt_Khai_Tan_Sum
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseLocalNotification() // CRITICAL: This initializes the native notification engine
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -16,7 +18,7 @@ namespace The_Hunt_Khai_Tan_Sum
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

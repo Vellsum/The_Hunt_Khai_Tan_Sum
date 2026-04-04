@@ -18,7 +18,7 @@ public partial class HomePage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        // Updates the "3" count from your wireframe every time when open the page [cite: 1, 2]
+        // Updates the "3" count from  wireframe every time when open the page [cite: 1, 2]
         _viewModel.RefreshAppCount();
     }
 
@@ -34,18 +34,18 @@ public partial class HomePage : ContentPage
 
     private async void OnHistoryClicked(object? sender, EventArgs e)
     {
-        await DisplayAlert("History", "Your hunt history will be displayed here.", "OK");
+        await DisplayAlertAsync("History", "Your hunt history will be displayed here.", "OK");
     }
 
     private async void OnSettingsClicked(object? sender, EventArgs e)
     {
-        await DisplayAlert("Settings", "App setting page.", "OK");
+        await Navigation.PushAsync(new SettingsPage());
     }
 
     private async void OnStartHuntClicked(object? sender, EventArgs e)
     {
 
         // Matches the "Start HUNT" button in your wireframe [cite: 1, 9]
-        await DisplayAlert("The HUNT", "The HUNT has started!", "OK");
+        await DisplayAlertAsync("The HUNT", "The HUNT has started!", "OK");
     }
 }

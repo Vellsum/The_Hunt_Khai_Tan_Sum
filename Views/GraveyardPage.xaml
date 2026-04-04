@@ -18,13 +18,14 @@
                Margin="0,0,0,20"/>
 
         <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
-            <Label Grid.Column="0" 
-                   Text="♪" FontSize="35" 
-                   TextColor="Black" 
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center"/>
+            <Image Grid.Column="0"
+                   Source="tiktok.jpg"              
+                   WidthRequest="70"
+                   HeightRequest="70"
+                   VerticalOptions="Center" />
             <Label Grid.Column="1" 
                    Text="TikTok" 
+                   Margin="20,0,0,0"
                    VerticalOptions="Center" 
                    FontSize="18" 
                    TextColor="Black"/>
@@ -35,12 +36,14 @@
         </Grid>
 
         <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
-            <Label Grid.Column="0" 
-                   Text="⏹️" FontSize="30" 
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center"/>
+            <Image Grid.Column="0"
+                   Source="ig.jpg"              
+                   WidthRequest="40"
+                   HeightRequest="40"
+                   VerticalOptions="Center"/>
             <Label Grid.Column="1" 
-                   Text="Instagram" 
+                   Text="Instagram"
+                   Margin="20,0,0,0"
                    VerticalOptions="Center" 
                    FontSize="18" 
                    TextColor="Black"/>
@@ -50,14 +53,15 @@
                     VerticalOptions="Center" />
         </Grid>
 
-        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
-            <Label Grid.Column="0" 
-                   Text="💬" 
-                   FontSize="30" 
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center"/>
+        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+            <Image Grid.Column="0"
+                   Source="messenger.png"              
+                   WidthRequest="40"
+                   HeightRequest="40"
+                   VerticalOptions="Center"/>
             <Label Grid.Column="1" 
                    Text="Messenger" 
+                   Margin="20,0,0,0"
                    VerticalOptions="Center" 
                    FontSize="18" 
                    TextColor="Black"/>
@@ -67,14 +71,15 @@
                     VerticalOptions="Center" />
         </Grid>
 
-        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
-            <Label Grid.Column="0" 
-                   Text="📽️" 
-                   FontSize="30" 
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center"/>
+        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
+            <Image Grid.Column="0"
+                   Source="yt.jpg"              
+                   WidthRequest="50"
+                   HeightRequest="50"
+                   VerticalOptions="Center"/>
             <Label Grid.Column="1" 
-                   Text="YouTube" 
+                   Text="YouTube"
+                   Margin="20,0,0,0"
                    VerticalOptions="Center" 
                    FontSize="18" 
                    TextColor="Black"/>
@@ -84,13 +89,15 @@
                     VerticalOptions="Center" />
         </Grid>
         <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
-            <Label Grid.Column="0" 
-                   Text="📩" 
-                   FontSize="30" 
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center"/> 
+            <Image Grid.Column="0"
+                   Source="whatsapp.jpg"              
+                   WidthRequest="55"
+                   HeightRequest="55"
+                   VerticalOptions="Center"
+            /> 
             <Label Grid.Column="1" 
                    Text="WhatsApp" 
+                   Margin="20,0,0,0"
                    VerticalOptions="Center" 
                    FontSize="18" 
                    TextColor="Black"/>
