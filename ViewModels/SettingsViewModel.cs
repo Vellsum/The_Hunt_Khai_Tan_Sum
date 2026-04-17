@@ -183,7 +183,7 @@ public partial class SettingsViewModel : ObservableObject
         await Shell.Current.Navigation.PopAsync();
     }
 }
-    // for the UI look more clear(neat) fix and remove this clearHistory()
+    // change to HistoryViewModel
 
     //[RelayCommand]
     //private async Task ClearHistory()

@@ -20,7 +20,7 @@ public partial class HomeViewModel : ObservableObject
     }
 
     [ObservableProperty]
-    private string huntStatusText = "Ready to Focus?";
+    private string huntStatusText = "The HUNT is OFF";
 
     [ObservableProperty]
     private int appCount;
@@ -278,7 +278,7 @@ public partial class HomeViewModel : ObservableObject
 
         IsHuntActive = false;
         ShowOverlay = false;
-        HuntStatusText = "Ready to Focus?";
+        HuntStatusText = "The HUNT is OFF";
         RemainingTime = "00:00:00";
         DisplayManifesto = "";
     }
