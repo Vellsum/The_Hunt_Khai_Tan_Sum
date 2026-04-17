@@ -1,4 +1,5 @@
-﻿using The_Hunt_Khai_Tan_Sum.ViewModels;
+﻿using The_Hunt_Khai_Tan_Sum.Services;
+using The_Hunt_Khai_Tan_Sum.ViewModels;
 
 namespace The_Hunt_Khai_Tan_Sum.Views;
 
@@ -6,46 +7,29 @@ public partial class HomePage : ContentPage
 {
     private readonly HomeViewModel _viewModel;
 
-    public HomePage()
+    public HomePage(ISettingsService settingsService)
     {
         InitializeComponent();
 
-        // Connects the ViewModel to the View
-        _viewModel = new HomeViewModel();
+        _viewModel = new HomeViewModel(settingsService);
         BindingContext = _viewModel;
     }
-
+    // for handling the case when the user interrupts the hunt by closing the app or navigating away    
     protected override void OnAppearing()
     {
+        if (Preferences.Default.Get("hunt_interrupted", false))
+        {
+            Preferences.Default.Set("hunt_interrupted", false);
+
+            if (BindingContext is HomeViewModel vm)
+            {
+                vm.StopHuntCommand.Execute(null);
+            }
+        }
         base.OnAppearing();
-        // Updates the "3" count from  wireframe every time when open the page [cite: 1, 2]
+
         _viewModel.RefreshAppCount();
-    }
-
-    private async void OnGraveyardClicked(object? sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new GraveyardPage());
-    }
-
-    private async void OnManifestoClicked(object? sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new ManifestoPage());
-    }
-
-    private async void OnHistoryClicked(object? sender, EventArgs e)
-    {
-        await DisplayAlertAsync("History", "Your hunt history will be displayed here.", "OK");
-    }
-
-    private async void OnSettingsClicked(object? sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new SettingsPage());
-    }
-
-    private async void OnStartHuntClicked(object? sender, EventArgs e)
-    {
-
-        // Matches the "Start HUNT" button in your wireframe [cite: 1, 9]
-        await DisplayAlertAsync("The HUNT", "The HUNT has started!", "OK");
+        _viewModel.RefreshManifesto();
+        _viewModel.RefreshSelectedApps();
     }
 }

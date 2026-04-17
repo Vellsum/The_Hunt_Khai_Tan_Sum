@@ -1,101 +1,199 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="The_Hunt_Khai_Tan_Sum.Views.HomePage"
-             BackgroundColor="White">
+             BackgroundColor="{AppThemeBinding Light=#F5F5F2, Dark=#0F0F0F}">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="30" Spacing="20" HorizontalOptions="Center" VerticalOptions="Start">
+    <Grid>
 
-            <Label Text="HOME/ DASHBOARD" 
-                   HorizontalOptions="Center"
-                   FontSize="30" 
-                   FontAttributes="Bold, Italic" 
-                   TextColor="Black" 
-                   Margin="0,15,0,20"/>
+        <!-- MAIN CONTENT -->
+        <ScrollView>
+            <VerticalStackLayout Padding="24"
+                                 Spacing="18"
+                                 HorizontalOptions="Center">
 
+                <!-- Title -->
+                <Label Text="HOME / DASHBOARD"
+                       FontSize="26"
+                       FontAttributes="Bold, Italic"
+                       TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                       HorizontalOptions="Center"
+                       Margin="0,20,0,15"/>
 
-            <HorizontalStackLayout Spacing="15" Margin="0,30,0,0">
-                <Border StrokeShape="RoundRectangle 30" 
-                        BackgroundColor="Black" 
-                        HeightRequest="55" 
-                        WidthRequest="55">
-                    <Label Text="{Binding AppCount}" 
-                           HorizontalOptions="Center" 
-                           VerticalOptions="Center" 
-                           TextColor="White"
-                           FontSize="20" 
-                           FontAttributes="Bold" />
-                </Border>
-                <Button Text="Graveyard [Select Apps]" 
-                        BackgroundColor="#E8F0D1" 
-                        TextColor="Black" 
-                        CornerRadius="20"      
+                <!-- MENU LIST -->
+                <VerticalStackLayout Spacing="16">
+
+                    <!-- Graveyard -->
+                    <Grid ColumnDefinitions="60,*" Margin="0,0,0,10">
+                        <Border BackgroundColor="#DDE3F0"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 30"
+                                WidthRequest="50"
+                                HeightRequest="50">
+                            <Label Text="{Binding AppCount}"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   FontAttributes="Bold"
+                                   FontSize="18"/>
+                        </Border>
+
+                        <Button Grid.Column="1"
+                                Text="Graveyard [Select Apps]"
+                                Command="{Binding OpenGraveyardCommand}"
+                                BackgroundColor="#D8DFC0"
+                                TextColor="Black"
+                                CornerRadius="20"
+                                HeightRequest="50"/>
+                    </Grid>
+
+                    
+                    <!-- Manifesto -->
+                    <Grid ColumnDefinitions="60,*" Margin="0,0,0,10">
+                        <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#EAEAEA}"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 18"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                Padding="8">
+                            <Image Source="message.jpg"
+                                   WidthRequest="30"
+                                   HeightRequest="30"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Border>
+
+                        <Button Grid.Column="1"
+                                Text="Manifesto [Write Message]"
+                                Command="{Binding OpenManifestoCommand}"
+                                BackgroundColor="#D8DFC0"
+                                TextColor="Black"
+                                CornerRadius="20"
+                                HeightRequest="50"/>
+                    </Grid>
+
+                    <!-- History -->
+                    <Grid ColumnDefinitions="60,*" Margin="0,0,0,10">
+                        <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#EAEAEA}"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 18"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                Padding="8">
+                            <Image Source="history.png"
+                                   WidthRequest="30"
+                                   HeightRequest="30"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Border>
+
+                        <Button Grid.Column="1"
+                                Text="History"
+                                Command="{Binding OpenHistoryCommand}"
+                                BackgroundColor="#D8DFC0"
+                                TextColor="Black"
+                                CornerRadius="20"
+                                HeightRequest="50"/>    
+                    </Grid>
+
+                    <!-- Settings -->
+                    <Grid ColumnDefinitions="60,*" Margin="0,0,0,10">
+                        <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#EAEAEA}"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 18"
+                                WidthRequest="50"
+                                HeightRequest="50"
+                                Padding="8">
+                            <Image Source="settings.png"
+                                   WidthRequest="30"
+                                   HeightRequest="30"
+                                   Aspect="AspectFit"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+                        </Border>
+
+                        <Button Grid.Column="1"
+                                Text="Settings"
+                                Command="{Binding OpenSettingsCommand}"
+                                BackgroundColor="#D8DFC0"
+                                TextColor="Black"
+                                CornerRadius="20"
+                                HeightRequest="50"/>
+                    </Grid>
+
+                </VerticalStackLayout>
+
+                <!-- STATUS -->
+                <Label Text="{Binding HuntStatusText}"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       Margin="0,30,0,15"
+                       TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+
+                <!-- START BUTTON -->
+                <Button Text="Start HUNT"
+                        Command="{Binding StartHuntCommand}"
+                        BackgroundColor="#BEE9A9"
+                        TextColor="Black"
+                        FontSize="22"
+                        FontAttributes="Bold"
+                        CornerRadius="30"
+                        HeightRequest="70"
                         WidthRequest="260"
-                        Clicked="OnGraveyardClicked" />
-            </HorizontalStackLayout>
+                        HorizontalOptions="Center"
+                        Margin="0,10,0,30"/>
 
-            <HorizontalStackLayout Spacing="15" Margin="0,10,0,0">
-                <Image Source="message.jpg"
-                       WidthRequest="55"
-                       HeightRequest="55"
-                       VerticalOptions="Center" />
-                <Button Text="Manifesto [Write Message]" 
-                        BackgroundColor="#E8F0D1" 
-                        TextColor="Black" 
-                        CornerRadius="20"
-                        WidthRequest="260"
-                        Clicked="OnManifestoClicked" />
-            </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
 
-            <HorizontalStackLayout Spacing="15" Margin="0,10,0,0">
-                <Image Source="history.png"
-                       WidthRequest="55"
-                       HeightRequest="55"
-                       VerticalOptions="Center" />
-                <Button Text="History"
-                        BackgroundColor="#E8F0D1" 
-                        TextColor="Black" 
-                        CornerRadius="20"
-                        WidthRequest="260"
-                        Clicked="OnHistoryClicked" />
-            </HorizontalStackLayout>
+        <!--  FULL SCREEN OVERLAY  -->
+        <Grid BackgroundColor="#CC000000"
+              IsVisible="{Binding ShowOverlay}">
 
-            <HorizontalStackLayout Spacing="15" Margin="0,10,0,0">
-                <Image Source="settings.png" 
-                       WidthRequest="55" 
-                       HeightRequest="55" 
-                       VerticalOptions="Center"
-                       Aspect="AspectFit" />
-                <Button Text="Settings" 
-                        BackgroundColor="#E8F0D1" 
-                        TextColor="Black" 
-                        CornerRadius="20"
-                        WidthRequest="260"
-                        Clicked="OnSettingsClicked" />
-            </HorizontalStackLayout>
-
-            <Label Text="{Binding HuntStatusText}"
-                   FontSize="22"
-                   HorizontalOptions="Center"
-                   FontAttributes="Bold"
-                   TextColor="Black"
-                   Margin="0,50,0,10" />
-
-            <Button Text="Start HUNT" 
-                    Command="{Binding ToggleHuntCommand}"
-                    BackgroundColor="#D1FFBD" 
-                    TextColor="Black" 
-                    FontSize="24"
-                    Margin="0,20,0,0"
-                    FontAttributes="Bold"
-                    HeightRequest="80"
-                    WidthRequest="280"
-                    CornerRadius="30"
+            <VerticalStackLayout
+                    VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    Clicked="OnStartHuntClicked"/>
+                    Spacing="25">
 
+                <Label Text="THE HUNT"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"/>
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <Label Text="{Binding SelectedAppsText}"
+                       FontSize="14"
+                       TextColor="White"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="Center"/>
+
+                <Border BackgroundColor="White"
+                        Stroke="Transparent"
+                        StrokeShape="RoundRectangle 25"
+                        WidthRequest="280"
+                        HeightRequest="280"
+                        Padding="20">
+
+                    <Label Text="{Binding DisplayManifesto}"
+                           FontSize="20"
+                           FontAttributes="Bold,Italic"
+                           TextColor="Black"
+                           VerticalTextAlignment="Center"
+                           HorizontalTextAlignment="Center"/>
+                </Border>
+
+                <Button Text="OKAY"
+                        Command="{Binding StopHuntCommand}"
+                        BackgroundColor="#CFE3F1"
+                        TextColor="Black"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        CornerRadius="25"
+                        HeightRequest="55"
+                        WidthRequest="200"/>
+            </VerticalStackLayout>
+        </Grid>
+
+    </Grid>
 </ContentPage>

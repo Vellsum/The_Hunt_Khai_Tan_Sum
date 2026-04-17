@@ -3,7 +3,7 @@ using Microsoft.Maui.Storage;
 
 namespace The_Hunt_Khai_Tan_Sum.Services;
 
-public class SettingsService
+public class SettingsService : ISettingsService
 {
     public void SaveSettings(UserSettings settings)
     {

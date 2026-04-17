@@ -5,10 +5,19 @@
              x:Class="The_Hunt_Khai_Tan_Sum.App">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Background -->
+            <Color x:Key="LightBackground">#F7F7F4</Color>
+            <Color x:Key="DarkBackground">#121212</Color>
+
+            <!-- Text -->
+            <Color x:Key="LightText">Black</Color>
+            <Color x:Key="DarkText">White</Color>
+
+            <!-- Card -->
+            <Color x:Key="LightCard">#EEF2FB</Color>
+            <Color x:Key="DarkCard">#1E1E1E</Color>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -6,21 +6,32 @@ namespace The_Hunt_Khai_Tan_Sum.ViewModels;
 public partial class ManifestoViewModel : ObservableObject
 {
     [ObservableProperty]
-    private string _manifestoText;
+    private string manifestoText = "";
 
     public ManifestoViewModel()
     {
-        // Load saved text
-        ManifestoText = Preferences.Default.Get("user_manifesto_text", "");
+        ManifestoText = Preferences.Default.Get("manifesto", "");
     }
 
     [RelayCommand]
     private async Task SaveManifesto()
     {
-        Preferences.Default.Set("user_manifesto_text", ManifestoText);
-        // We use Shell.Current for cleaner navigation in ViewModels
-        await Shell.Current.DisplayAlertAsync("Saved", "Manifesto locked in!", "OK");
+        if (string.IsNullOrWhiteSpace(ManifestoText))
+        {
+            await Shell.Current.DisplayAlertAsync(
+                "Empty Message",
+                "Please write your future-self message first.",
+                "OK");
+            return;
+        }
+
+        Preferences.Default.Set("manifesto", ManifestoText);
+
+        await Shell.Current.DisplayAlertAsync(
+            "Saved",
+            "Manifesto locked in!",
+            "OK");
+
         await Shell.Current.Navigation.PopAsync();
     }
-
 }

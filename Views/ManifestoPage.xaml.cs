@@ -7,8 +7,6 @@ public partial class ManifestoPage : ContentPage
     public ManifestoPage()
     {
         InitializeComponent();
-        // This is where link the two
         BindingContext = new ManifestoViewModel();
     }
-
 }

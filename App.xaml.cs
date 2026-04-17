@@ -1,17 +1,27 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿namespace The_Hunt_Khai_Tan_Sum;
 
-namespace The_Hunt_Khai_Tan_Sum
+public partial class App : Application
 {
-    public partial class App : Application
+    public App()
     {
-        public App()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        Current.UserAppTheme = AppTheme.Light;
+    }
+    protected override void OnSleep()
+    {
+        base.OnSleep();
 
-        protected override Window CreateWindow(IActivationState? activationState)
+        var runInBackground = Preferences.Default.Get("run_in_background", false);
+
+        if (!runInBackground)
         {
-            return new Window(new AppShell());
+            // stop hunt if user leaves app
+            Preferences.Default.Set("hunt_interrupted", true);
         }
+    }
+
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        return new Window(new AppShell());
     }
 }

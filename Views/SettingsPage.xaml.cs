@@ -7,7 +7,6 @@ public partial class SettingsPage : ContentPage
     public SettingsPage()
     {
         InitializeComponent();
-        // The BindingContext connects the UI (XAML) to the Logic (C#)
         BindingContext = new SettingsViewModel();
     }
 }

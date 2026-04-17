@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:The_Hunt_Khai_Tan_Sum.Converters"
+             x:Class="The_Hunt_Khai_Tan_Sum.Views.HistoryPage"
+             BackgroundColor="{AppThemeBinding Light=#F5F5F2, Dark=#0F0F0F}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:CountToProgressConverter x:Key="CountToProgressConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24"
+                             Spacing="20"
+                             MaximumWidthRequest="420"
+                             HorizontalOptions="Center">
+
+            <!-- TITLE -->
+            <Label Text="HISTORY"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   Margin="0,30,0,15"
+                   HorizontalOptions="Center"
+                   TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+
+            <!-- SUBTITLE -->
+            <Label Text="Becoming a Master of Your Time!"
+                   FontSize="16"
+                   Margin="0,0,0,10"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}" />
+
+            <!-- CARD -->
+            <Border BackgroundColor="{AppThemeBinding Light=#EDEDED, Dark=#1A1A1A}"
+                    Stroke="Transparent"
+                    StrokeShape="RoundRectangle 50"
+                    HeightRequest="300"
+                    Padding="20">
+
+                <VerticalStackLayout Spacing="20" Margin="0,0,0,10">
+
+                    <Label Text="{Binding TotalMinutesText}"
+                           FontSize="18"
+                           Margin="0,0,0,20"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="{AppThemeBinding Light=#444444, Dark=#DDDDDD}" />
+
+                    <CollectionView ItemsSource="{Binding UsageData}"
+                                    SelectionMode="None">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid ColumnDefinitions="60,*,40"
+                                      Padding="0,8">
+
+                                    <Label Text="{Binding Month}"
+                                           FontAttributes="Bold"
+                                           FontSize="16"
+                                           TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                                           VerticalOptions="Center"/>
+
+                                    <ProgressBar Grid.Column="1"
+                                                 Progress="{Binding Count, Converter={StaticResource CountToProgressConverter}}"
+                                                 HeightRequest="10"
+                                                 VerticalOptions="Center"/>
+
+                                    <Label Grid.Column="2"
+                                           Text="{Binding Count}"
+                                           FontSize="16"
+                                           TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                                           HorizontalTextAlignment="End"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- BUTTONS -->
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="16"
+                  Margin="0,10,0,50">
+
+                <Button Grid.Column="0"
+                        Text="BACK"
+                        Command="{Binding BackCommand}"
+                        BackgroundColor="#F3C96B"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        CornerRadius="20"
+                        HeightRequest="48"/>
+
+                <Button Grid.Column="1"
+                        Text="Share"
+                        Command="{Binding ShareProgressCommand}"
+                        BackgroundColor="#2D6DA3"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="20"
+                        HeightRequest="48"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

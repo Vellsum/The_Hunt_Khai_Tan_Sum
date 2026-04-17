@@ -2,51 +2,56 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="The_Hunt_Khai_Tan_Sum.Views.ManifestoPage"
-             BackgroundColor="White">
+             BackgroundColor="{AppThemeBinding Light=#F5F5F2, Dark=#0F0F0F}">
 
-    <VerticalStackLayout Padding="30" Spacing="0" VerticalOptions="Center" HorizontalOptions="Center">
+    <VerticalStackLayout Padding="24"
+                         Spacing="18"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center">
 
-        <Label Text="MANIFESTO!" 
-               FontSize="36" 
-               FontAttributes="Bold, Italic" 
-               TextColor="Black" 
-               HorizontalOptions="Center" 
-               Margin="0,0,0,10"/>
+        <!-- TITLE -->
+        <Label Text="MANIFESTO"
+               FontSize="28"
+               FontAttributes="Bold, Italic"
+               TextColor="{AppThemeBinding Light=Black, Dark=White}"
+               HorizontalOptions="Center" />
 
-        <Label Text="Write your Future self a message" 
-               FontSize="20" 
-               FontAttributes="Italic" 
-               TextColor="Black" 
-               HorizontalOptions="Center" 
-               HorizontalTextAlignment="Center" 
-               Margin="0,0,0,40"/>
+        <!-- SUBTITLE -->
+        <Label Text="Write your future self a message"
+               FontSize="16"
+               TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               Margin="0,0,0,20"/>
 
-        <Border Margin="0,0,0,60" 
-                WidthRequest="300" 
-                HeightRequest="300" 
-                BackgroundColor="#F0F0F0"
-                Stroke="Gray"
-                StrokeThickness="1"
-                StrokeShape="RoundRectangle 40">
-            <Editor x:Name="ManifestoEditor"
-                    Placeholder="Enter your message..." 
-                    TextColor="Black" 
-                    FontSize="18"
-                    Margin="20"
-                    BackgroundColor="Transparent"/>
+        <!-- TEXT BOX -->
+        <Border WidthRequest="300"
+                HeightRequest="260"
+                BackgroundColor="{AppThemeBinding Light=#EDEDED, Dark=#1A1A1A}"
+                Stroke="Transparent"
+                StrokeShape="RoundRectangle 30"
+                Padding="16">
+
+            <Editor Text="{Binding ManifestoText, Mode=TwoWay}"
+                    Placeholder="Write your future self a message..."
+                    AutoSize="TextChanges"
+                    BackgroundColor="Transparent"
+                    TextColor="{AppThemeBinding Light=Black, Dark=White}"
+                    FontSize="16" />
         </Border>
 
-        <Button Text="Save Manifesto" 
-                Command="{Binding SaveManifestoCommand}" 
-                TextColor="Black" 
-                FontSize="22" 
+        <!-- SAVE BUTTON -->
+        <Button Text="SAVE"
+                Command="{Binding SaveManifestoCommand}"
+                BackgroundColor="#E3A8B3"
+                TextColor="Black"
+                FontSize="18"
                 FontAttributes="Bold"
-                BackgroundColor="#FFB6C1" 
-                CornerRadius="30" 
-                HeightRequest="70" 
-                WidthRequest="280" 
-                HorizontalOptions="Center" />   
-
+                CornerRadius="25"
+                HeightRequest="55"
+                WidthRequest="260"
+                HorizontalOptions="Center"
+                Margin="0,20,0,0"/>
 
     </VerticalStackLayout>
 </ContentPage>

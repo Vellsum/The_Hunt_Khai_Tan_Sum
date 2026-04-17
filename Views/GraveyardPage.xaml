@@ -1,127 +1,110 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="The_Hunt_Khai_Tan_Sum.Views.GraveyardPage"
-             BackgroundColor="White">
+             BackgroundColor="{AppThemeBinding Light=#F5F5F2, Dark=#0F0F0F}">
 
+    <ScrollView>
+        <VerticalStackLayout Padding="24"
+                             Spacing="18"
+                             MaximumWidthRequest="420"
+                             HorizontalOptions="Center">
 
-    <VerticalStackLayout Padding="30" Spacing="25" >
-        <Label Text="The Graveyard"
-               FontSize="28" 
-               FontAttributes="Bold" 
-               HorizontalOptions="Center" 
-               TextColor="Black" />
-        <Label Text="Select Apps to Hunt" 
-               FontSize="18" FontAttributes="Italic" 
-               HorizontalOptions="Center" 
-               TextColor="Gray" 
-               Margin="0,0,0,20"/>
+            <!-- TITLE -->
+            <Label Text="The Graveyard"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="{AppThemeBinding Light=Black, Dark=White}" />
 
-        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
-            <Image Grid.Column="0"
-                   Source="tiktok.jpg"              
-                   WidthRequest="70"
-                   HeightRequest="70"
-                   VerticalOptions="Center" />
-            <Label Grid.Column="1" 
-                   Text="TikTok" 
-                   Margin="20,0,0,0"
-                   VerticalOptions="Center" 
-                   FontSize="18" 
-                   TextColor="Black"/>
-            <Switch Grid.Column="2" 
-                    x:Name="TikTokSwitch" 
-                    OnColor="#D1FFBD" 
-                    VerticalOptions="Center" />
-        </Grid>
+            <Label Text="Select Apps to Hunt"
+                   FontSize="16"
+                   HorizontalOptions="Center"
+                   TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}" />
 
-        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
-            <Image Grid.Column="0"
-                   Source="ig.jpg"              
-                   WidthRequest="40"
-                   HeightRequest="40"
-                   VerticalOptions="Center"/>
-            <Label Grid.Column="1" 
-                   Text="Instagram"
-                   Margin="20,0,0,0"
-                   VerticalOptions="Center" 
-                   FontSize="18" 
-                   TextColor="Black"/>
-            <Switch Grid.Column="2" 
-                    x:Name="InstagramSwitch" 
-                    OnColor="#D1FFBD" 
-                    VerticalOptions="Center" />
-        </Grid>
+            <!-- APP LIST -->
+            <CollectionView ItemsSource="{Binding Apps}"
+                            SelectionMode="None"
+                            Margin="0,10,0,0">
 
-        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
-            <Image Grid.Column="0"
-                   Source="messenger.png"              
-                   WidthRequest="40"
-                   HeightRequest="40"
-                   VerticalOptions="Center"/>
-            <Label Grid.Column="1" 
-                   Text="Messenger" 
-                   Margin="20,0,0,0"
-                   VerticalOptions="Center" 
-                   FontSize="18" 
-                   TextColor="Black"/>
-            <Switch Grid.Column="2" 
-                    x:Name="MessengerSwitch" 
-                    OnColor="#D1FFBD" 
-                    VerticalOptions="Center" />
-        </Grid>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
 
-        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand" Margin="0,10,0,0">
-            <Image Grid.Column="0"
-                   Source="yt.jpg"              
-                   WidthRequest="50"
-                   HeightRequest="50"
-                   VerticalOptions="Center"/>
-            <Label Grid.Column="1" 
-                   Text="YouTube"
-                   Margin="20,0,0,0"
-                   VerticalOptions="Center" 
-                   FontSize="18" 
-                   TextColor="Black"/>
-            <Switch Grid.Column="2" 
-                    x:Name="YouTubeSwitch" 
-                    OnColor="#D1FFBD" 
-                    VerticalOptions="Center" />
-        </Grid>
-        <Grid ColumnDefinitions="50, *, Auto" HorizontalOptions="FillAndExpand">
-            <Image Grid.Column="0"
-                   Source="whatsapp.jpg"              
-                   WidthRequest="55"
-                   HeightRequest="55"
-                   VerticalOptions="Center"
-            /> 
-            <Label Grid.Column="1" 
-                   Text="WhatsApp" 
-                   Margin="20,0,0,0"
-                   VerticalOptions="Center" 
-                   FontSize="18" 
-                   TextColor="Black"/>
-            <Switch Grid.Column="2" 
-                    x:Name="WhatsAppSwitch" 
-                    OnColor="#D1FFBD" 
-                    VerticalOptions="Center" />
-        </Grid>
+                        <!-- CARD -->
+                        <Border BackgroundColor="{AppThemeBinding Light=#EDEDED, Dark=#1A1A1A}"
+                                Stroke="Transparent"
+                                StrokeShape="RoundRectangle 20"
+                                Padding="12"
+                                Margin="0,0,0,12">
 
-        <HorizontalStackLayout HorizontalOptions="Center" Spacing="30" Margin="0,50,0,0">
-            <Button Text="BACK" 
-                    Clicked="OnBackClicked" 
-                    BackgroundColor="#FFD580" 
-                    TextColor="Black" 
-                    CornerRadius="15" 
-                    WidthRequest="110" 
-                    HeightRequest="45"/>
-            <Button Text="SAVE" 
-                    Clicked="OnSaveClicked" 
-                    BackgroundColor="#ADD8E6" 
-                    TextColor="Black" 
-                    CornerRadius="15" 
-                    WidthRequest="110" 
-                    HeightRequest="45"/>
-        </HorizontalStackLayout>
-    </VerticalStackLayout>
+                            <Grid ColumnDefinitions="60,*,Auto"
+                                  VerticalOptions="Center">
+
+                                <!-- ICON -->
+                                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#EAEAEA}"
+                                        Stroke="Transparent"
+                                        StrokeShape="RoundRectangle 18"
+                                        WidthRequest="50"
+                                        HeightRequest="50"
+                                        Padding="8">
+
+                                    <Image Source="{Binding Icon}"
+                                           Aspect="AspectFit"
+                                           WidthRequest="30"
+                                           HeightRequest="30"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>   
+                                </Border>
+
+                                <!-- NAME -->
+                                <Label Grid.Column="1"
+                                       Text="{Binding Name}"
+                                       FontSize="17"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center"
+                                       Margin="10,0,0,10"
+                                       TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+
+                                <!-- SWITCH -->
+                                <Switch Grid.Column="2"
+                                        IsToggled="{Binding IsSelected}"
+                                        OnColor="#A6D89B"
+                                        ThumbColor="White"
+                                        Scale="0.9"
+                                        Margin="0,0,0,10"
+                                        VerticalOptions="Center"/>
+                            </Grid>
+
+                        </Border>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- BUTTONS -->
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="16"
+                  Margin="0,10,0,25">
+
+                <Button Grid.Column="0"
+                        Text="BACK"
+                        Command="{Binding BackCommand}"
+                        BackgroundColor="#F3C96B"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        CornerRadius="22"
+                        HeightRequest="50"/>
+
+                <Button Grid.Column="1"
+                        Text="SAVE"
+                        Command="{Binding SaveAppsCommand}"
+                        BackgroundColor="#8FB7C9"
+                        TextColor="Black"
+                        FontAttributes="Bold"
+                        CornerRadius="22"
+                        Margin="0,0,0,10"
+                        HeightRequest="50"/>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

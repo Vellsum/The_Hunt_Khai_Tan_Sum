@@ -1,108 +1,217 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:The_Hunt_Khai_Tan_Sum.ViewModels"
+             xmlns:converters="clr-namespace:The_Hunt_Khai_Tan_Sum.Converters"
              x:Class="The_Hunt_Khai_Tan_Sum.Views.SettingsPage"
-             BackgroundColor="White">
+             BackgroundColor="{AppThemeBinding Light=#F5F5F2, Dark=#0F0F0F}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ScrollView>
-        <VerticalStackLayout Padding="30" 
-                             Spacing="15"
-                             MaximumWidthRequest="400"
+        <VerticalStackLayout Padding="24"
+                             Spacing="20"
+                             MaximumWidthRequest="420"
                              HorizontalOptions="Center">
 
-            <Grid ColumnDefinitions="*, Auto" Margin="0,10">
-                <Label Text="Timer Settings" 
-                       FontSize="28" 
-                       FontAttributes="Bold, Italic" 
-                       TextColor="Black" 
-                       VerticalOptions="Center" />
-                <Image Grid.Column="1" Source="settings_icon.png" WidthRequest="30" HeightRequest="30" />
-            </Grid>
+            <!-- TITLE -->
+            <Label Text="SETTINGS"
+                   FontSize="26"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="{AppThemeBinding Light=Black, Dark=White}" />
 
-            <Border BackgroundColor="#E9E9DB" StrokeShape="RoundRectangle 25" Padding="20,10" Stroke="Transparent">
-                <Grid ColumnDefinitions="*, Auto">
-                    <Label Text="Enable Timer Delay" 
-                           FontSize="18" 
-                           FontAttributes="Bold" 
-                           TextColor="Black" 
-                           VerticalOptions="Center"/>
-                    <Switch Grid.Column="1" IsToggled="{Binding IsTimerDelayEnabled}" OnColor="Black" ThumbColor="White"/>
+            <!-- DARK MODE -->
+            <Border BackgroundColor="{AppThemeBinding Light=#EDEDED, Dark=#1A1A1A}"
+                    Stroke="Transparent"
+                    StrokeShape="RoundRectangle 15"
+                    Padding="5">
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="Dark Mode"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+
+                    <Switch Grid.Column="1"
+                            IsToggled="{Binding IsDarkModeEnabled}"
+                            VerticalOptions="Center"/>
                 </Grid>
             </Border>
 
-            <HorizontalStackLayout HorizontalOptions="Center" Spacing="15" Margin="0,15" IsVisible="{Binding IsTimerSetupVisible}">
-                <Border BackgroundColor="#A4C2F4" WidthRequest="75" HeightRequest="70" StrokeShape="RoundRectangle 5" Stroke="Transparent">
-                    <TimePicker Time="{Binding SelectedDelayTime}" 
-                                Format="HH" 
-                                FontSize="32"
-                                FontAttributes="Bold" 
-                                TextColor="#112244" 
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"/>
-                </Border>
-                <Border BackgroundColor="#A4C2F4" WidthRequest="75" HeightRequest="70" StrokeShape="RoundRectangle 5" Stroke="Transparent">
-                    <TimePicker Time="{Binding SelectedDelayTime}" 
-                                Format="mm" FontSize="32" 
-                                FontAttributes="Bold" 
-                                TextColor="#112244"
-                                HorizontalOptions="Center" 
-                                VerticalOptions="Center"/>
-                </Border>
-                <Border BackgroundColor="#A4C2F4" WidthRequest="75" HeightRequest="70" StrokeShape="RoundRectangle 5" Stroke="Transparent">
-                    <TimePicker Time="{Binding SelectedDelayTime}"
-                                Format="ss" 
-                                FontSize="32" 
-                                FontAttributes="Bold"
-                                TextColor="#112244" 
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"/>
-                </Border>
-            </HorizontalStackLayout>
+            <!-- TIMER ENABLE -->
+            <Border BackgroundColor="{AppThemeBinding Light=#EDEDED, Dark=#1A1A1A}"
+                    Stroke="Transparent"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="16">
 
-            <Label Text="HUNT Behavior" FontSize="20" FontAttributes="Bold, Italic" TextColor="Black" />
-            <Border BackgroundColor="#F1F5FF" StrokeShape="RoundRectangle 20" Padding="15" Stroke="Transparent">
-                <VerticalStackLayout Spacing="10">
-                    <RadioButton Content="Whisper Mode" 
-                                 IsChecked="{Binding IsPoltergeistMode, Converter={StaticResource InvertedBoolConverter}}"
-                                 FontAttributes="Bold" />
-                    <RadioButton Content="Poltergeist Mode" IsChecked="{Binding IsPoltergeistMode}" FontAttributes="Bold" />
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="Enable Timer Delay"
+                           FontSize="16"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center"
+                           TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+
+                    <Switch Grid.Column="1"
+                            IsToggled="{Binding IsTimerDelayEnabled}"
+                            VerticalOptions="Center"/>
+                </Grid>
+            </Border>
+
+            <!-- TIMER BLOCK -->
+            <VerticalStackLayout IsVisible="{Binding IsTimerSetupVisible}"
+                                 Spacing="14">
+
+                <HorizontalStackLayout Spacing="12"
+                                       HorizontalOptions="Center">
+
+                    <Border BackgroundColor="#B8C6F2"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 12"
+                            WidthRequest="70"
+                            HeightRequest="60">
+                        <Label Text="{Binding Hours}"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+
+                    <Border BackgroundColor="#B8C6F2"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 12"
+                            WidthRequest="70"
+                            HeightRequest="60">
+                        <Label Text="{Binding Minutes}"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+
+                    <Border BackgroundColor="#B8C6F2"
+                            Stroke="Transparent"
+                            StrokeShape="RoundRectangle 12"
+                            WidthRequest="70"
+                            HeightRequest="60">
+                        <Label Text="{Binding Seconds}"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+                    </Border>
+
+                </HorizontalStackLayout>
+
+                <Label Text="Select delay time"
+                       FontSize="12"
+                       HorizontalOptions="Center"
+                       TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}" />
+
+                <!-- PICKERS -->
+                <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+
+                    <Picker ItemsSource="{Binding HourOptions}"
+                            SelectedItem="{Binding SelectedHour}"
+                            Title="HH"/>
+
+                    <Picker Grid.Column="1"
+                            ItemsSource="{Binding MinuteOptions}"
+                            SelectedItem="{Binding SelectedMinute}"
+                            Title="MM"/>
+
+                    <Picker Grid.Column="2"
+                            ItemsSource="{Binding SecondOptions}"
+                            SelectedItem="{Binding SelectedSecond}"
+                            Title="SS"/>
+
+                </Grid>
+
+            </VerticalStackLayout>
+
+            <!-- MODE -->
+            <Label Text="HUNT Behavior"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+
+            <Border BackgroundColor="{AppThemeBinding Light=#EDEDED, Dark=#1A1A1A}"
+                    Stroke="Transparent"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="16">
+
+                <VerticalStackLayout Spacing="14">
+
+                    <Grid ColumnDefinitions="Auto,*">
+                        <RadioButton IsChecked="{Binding IsPoltergeistMode, Converter={StaticResource InvertedBoolConverter}}"/>
+                        <Label Grid.Column="1"
+                               Text="Whisper Mode"
+                               VerticalOptions="Center"
+                               TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*">
+                        <RadioButton IsChecked="{Binding IsPoltergeistMode}"/>
+                        <Label Grid.Column="1"
+                               Text="Poltergeist Mode"
+                               VerticalOptions="Center"
+                               TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+                    </Grid>
+
                 </VerticalStackLayout>
             </Border>
 
-            <Label Text="Edit App Blacklist" FontSize="18" FontAttributes="Bold" TextColor="Black" />
-            <Border BackgroundColor="#F1F5FF" 
-                    StrokeShape="RoundRectangle 20" 
-                    Padding="15,8"
-                    HorizontalOptions="Start" 
-                    Stroke="Transparent">
-                <HorizontalStackLayout Spacing="10">
-                    <Ellipse WidthRequest="20" HeightRequest="20" Fill="#DDE4EF" VerticalOptions="Center"/>
-                    <Label Text="Clear History &amp; Data" 
-                           TextColor="#777777" 
-                           FontAttributes="Bold"
-                           VerticalOptions="Center"/>
-                </HorizontalStackLayout>
-            </Border>
+            <!--Degital LOCKDOWN -->
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Digital Lockdown"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       TextColor="{AppThemeBinding Light=Black, Dark=White}" />
 
-            <Grid ColumnDefinitions="*, Auto" Margin="0,5">
-                <Label Text="Digital Lockdown" FontSize="18" FontAttributes="Bold" VerticalOptions="Center"/>
-                <Switch Grid.Column="1" IsToggled="{Binding IsDigitalLockdownEnabled}" OnColor="#BCC78E" Scale="0.9"/>
+                <Switch Grid.Column="1"
+                        IsToggled="{Binding IsDigitalLockdownEnabled}"/>
             </Grid>
 
-            <Grid ColumnDefinitions="*, Auto" Margin="0,5">
-                <Label Text="Run in Background" FontSize="18" FontAttributes="Bold" VerticalOptions="Center"/>
-                <Switch Grid.Column="1" IsToggled="{Binding IsRunInBackgroundEnabled}" OnColor="Black" Scale="0.9"/>
+            <!--Run BACKGROUND -->
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Run in Background"
+                       FontSize="16"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       TextColor="{AppThemeBinding Light=Black, Dark=White}" />
+
+                <Switch Grid.Column="1"
+                        IsToggled="{Binding IsRunInBackgroundEnabled}"/>
             </Grid>
 
-            <Grid ColumnDefinitions="*, *" ColumnSpacing="30" Margin="0,20">
-                <Button Text="BACK" Command="{Binding BackCommand}" 
-                        BackgroundColor="#FFCC66" TextColor="Black" 
-                        FontAttributes="Bold" CornerRadius="20" HeightRequest="45"/>
+            <!-- BUTTONS -->
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="16">
 
-                <Button Text="SAVE" Command="{Binding SaveSettingsCommand}" 
-                        BackgroundColor="#61AFEF" TextColor="Black" 
-                        FontAttributes="Bold" CornerRadius="20" HeightRequest="45"/>
+                <Button Text="BACK"
+                        Command="{Binding BackCommand}"
+                        BackgroundColor="#F3C96B"
+                        TextColor="Black"
+                        HeightRequest="50"
+                        FontSize="15"
+                        WidthRequest="150"
+                        FontAttributes="Bold"
+                        CornerRadius="20"/>
+
+                <Button Grid.Column="1"
+                        Text="SAVE"
+                        FontAttributes="Bold"
+                        HeightRequest="50"
+                        WidthRequest="150"
+                        FontSize="15"
+                        Command="{Binding SaveSettingsCommand}"
+                        BackgroundColor="#8FB7C9"
+                        TextColor="Black"
+                        CornerRadius="20"/>
             </Grid>
 
         </VerticalStackLayout>
