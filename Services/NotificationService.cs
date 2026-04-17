@@ -63,15 +63,15 @@ public class NotificationService
     }
 
     public async Task ShowImmediateHuntNotification()
-    { 
+    {
         var selectedAppsSummary = GetSelectedAppsSummary();
-        var message = Preferences.Get("manifesto", "Stop. Is this distraction worth it");
+        var message = Preferences.Get("manifesto", "Stop. Is this distraction worth it?");
         var mode = Preferences.Get("mode", "WHISPER");
 
         string title = mode == "POLTERGEIST" ? "⚠️ THE HUNT" : "👁️ Gentle Reminder";
         string finalMessage = mode == "POLTERGEIST"
-            ? $"STOP.\n{message.ToUpper()}"
-            : message;
+            ? $"{selectedAppsSummary}\nSTOP.\n{message.ToUpper()}"
+            : $"{selectedAppsSummary}\n{message}";
 
         var request = new NotificationRequest
         {
@@ -86,12 +86,15 @@ public class NotificationService
         {
             try
             {
-                Vibration.Default.Vibrate(TimeSpan.FromMilliseconds(300));
-                await Task.Delay(200);
-
-                Vibration.Default.Vibrate(TimeSpan.FromMilliseconds(500));
+                for (int i = 0; i < 3; i++)
+                {
+                    Vibration.Default.Vibrate(TimeSpan.FromMilliseconds(400));
+                    await Task.Delay(250);
+                }
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+            }
         }
 
         var now = DateTime.Now;
