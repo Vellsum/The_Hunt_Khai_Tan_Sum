@@ -3,45 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="The_Hunt_Khai_Tan_Sum.Views.ManifestoPage"
              BackgroundColor="{AppThemeBinding Light=#F5F5F2, Dark=#0F0F0F}">
-
-    <VerticalStackLayout Padding="24"
+    <ScrollView>
+        <VerticalStackLayout Padding="24"
                          Spacing="18"
                          HorizontalOptions="Center"
                          VerticalOptions="Center">
 
-        <!-- TITLE -->
-        <Label Text="MANIFESTO"
+            <!-- TITLE -->
+            <Label Text="MANIFESTO"
                FontSize="28"
                FontAttributes="Bold, Italic"
                TextColor="{AppThemeBinding Light=Black, Dark=White}"
                HorizontalOptions="Center" />
 
-        <!-- SUBTITLE -->
-        <Label Text="Write your future self a message"
+            <!-- SUBTITLE -->
+            <Label Text="Write your future self a message"
                FontSize="16"
                TextColor="{AppThemeBinding Light=#666666, Dark=#AAAAAA}"
                HorizontalOptions="Center"
                HorizontalTextAlignment="Center"
                Margin="0,0,0,20"/>
 
-        <!-- TEXT BOX -->
-        <Border WidthRequest="300"
+            <!-- TEXT BOX -->
+            <Border WidthRequest="300"
                 HeightRequest="260"
                 BackgroundColor="{AppThemeBinding Light=#EDEDED, Dark=#1A1A1A}"
                 Stroke="Transparent"
                 StrokeShape="RoundRectangle 30"
                 Padding="16">
 
-            <Editor Text="{Binding ManifestoText, Mode=TwoWay}"
+                <Editor Text="{Binding ManifestoText, Mode=TwoWay}"
                     Placeholder="Write your future self a message..."
                     AutoSize="TextChanges"
                     BackgroundColor="Transparent"
                     TextColor="{AppThemeBinding Light=Black, Dark=White}"
                     FontSize="16" />
-        </Border>
+            </Border>
 
-        <!-- SAVE BUTTON -->
-        <Button Text="SAVE"
+            <!-- SAVE BUTTON -->
+            <Button Text="SAVE"
                 Command="{Binding SaveManifestoCommand}"
                 BackgroundColor="#E3A8B3"
                 TextColor="Black"
@@ -53,5 +53,7 @@
                 HorizontalOptions="Center"
                 Margin="0,20,0,0"/>
 
-    </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+         
 </ContentPage>
