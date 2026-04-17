@@ -38,6 +38,34 @@ public partial class HistoryViewModel : ObservableObject
         double totalMinutes = Preferences.Get("total_hunt_minutes", 0.0);
         TotalMinutesText = $"Total Reminder Session Time: {Math.Round(totalMinutes, 1)} minutes";
     }
+    [RelayCommand]
+    public async Task ClearHistory()
+    {
+        bool confirmed = await Shell.Current.DisplayAlertAsync(
+            "Clear History",
+            "This will remove all tracked HUNT data.",
+            "Yes",
+            "Cancel");
+
+        if (!confirmed)
+            return;
+
+        var now = DateTime.Now;
+        for (int i = 0; i < 24; i++)
+        {
+            var date = now.AddMonths(-i);
+            Preferences.Remove($"usage_{date.Year}_{date.Month:D2}");
+        }
+
+        Preferences.Remove("total_hunt_minutes");
+        Preferences.Remove("graveyard_count");
+        Preferences.Remove("graveyard_apps");
+
+
+        LoadHistory(); // refresh immediately
+
+        await Shell.Current.DisplayAlertAsync("Done", "History cleared.", "OK");
+    }
 
     [RelayCommand]
     private async Task Back()
@@ -70,3 +98,6 @@ public class MonthlyUsage
     public string Month { get; set; } = "";
     public int Count { get; set; }
 }
+
+
+    
